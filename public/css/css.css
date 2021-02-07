@@ -1,0 +1,249 @@
+.header img {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+}
+
+nav {
+    background-color: #4ce600 ;
+    margin-top: 8px;
+}
+
+.nav-item {
+    padding-left: 8px;
+    padding-right: 8px;
+
+}
+
+.nav-item:hover {
+    background-color: darkgreen;
+}
+
+
+.stlpec img {
+    vertical-align: middle;
+    width: 100%;
+}
+
+#picture_Form{
+    display: none;
+}
+
+#add_new_picture{
+
+    margin-left: 45%;
+    margin-right: auto;
+}
+
+
+.picture{
+    height: 30%;
+    width: 80%;
+}
+.picture_header{
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: large;
+    font-style: initial;
+    border-bottom: lightgrey 2px solid;
+    height: 90px;
+}
+.picture_header:hover .edit {
+    display: block;
+}
+.picture_header:hover .delete {
+    display: block;
+}
+.picture_footer{
+    padding-top: 10px;
+    padding-left: 80px;
+    padding-bottom: 10px;
+    font-size: large;
+    font-style: initial;
+    border-top: lightgrey 2px solid;
+    height: 90px;
+}
+.picture_edit_form{
+    height: 30%;
+    padding-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 40%;
+    background-color: whitesmoke;
+    display: none;
+}
+.picture_display{
+    height: 30%;
+    padding-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 40%;
+    background-color: whitesmoke;
+}
+
+.editPicturebtn:hover, .deletePicturebtn:hover,.submitEditPicture:hover,  .cancelEditPicturebtn:hover{
+    color: lime;
+}
+
+.editPicturebtn, .deletePicturebtn,.submitEditPicture,  .cancelEditPicturebtn{
+    color: black;
+    margin-right: 0px;
+    margin-left: auto;
+    float: right;
+}
+
+div div textarea{
+    margin-bottom: 0px;
+}
+
+@media screen and (max-width: 800px) {
+    .picture {
+        flex: 100%;
+        max-width: 100%;
+    }
+    .picture_display{
+        height: 100%;
+        padding-top: 0px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 20px;
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 100%;
+        background-color: whitesmoke;
+    }
+}
+
+#editItemModal{
+    display: none;
+}
+
+#addMenuItemForm{
+    display: none;
+}
+
+.edit_menu_item{
+    width: 80%;
+}
+
+.edit_menu_form{
+    display: none;
+}
+
+table{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: chocolate;
+}
+
+
+.cena {
+    font-size: 30px;
+    text-align: right ;
+}
+
+table:hover .edit {
+    display: block;
+}
+table:hover .delete {
+    display: block;
+}
+
+.edit, .delete {
+    text-align: right;
+    display: none;
+}
+
+.edit a, .delete a {
+    color: #000;
+}
+
+
+
+tr:nth-child(even){
+
+}
+
+table:hover {
+    background-color: navajowhite;
+    color: black;
+}
+
+table tr :hover{
+    background-color: navajowhite;
+    color: lime;
+}
+
+.registration, .loginform{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 8px;
+    background-color: chartreuse;
+
+}
+
+td .cancel a, td .submit a{
+    color: black; !important;
+}
+
+.account {
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+
+form button {
+    margin: 5px 0px;
+}
+textarea {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.comments-section {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+}
+.comment {
+    margin-bottom: 10px;
+}
+.comment .comment-name {
+    font-weight: bold;
+}
+.comment .comment-date {
+    font-style: italic;
+    font-size: 0.8em;
+}
+.comment .reply-btn, .edit-btn {
+    font-size: 0.8em;
+}
+.comment-details {
+    width: 91.5%;
+    float: left;
+}
+.comment-details p {
+    margin-bottom: 0px;
+}
+
+.edit_comment_form{
+    display: none;
+}
+
+#comment_form {
+    margin-top: 10px;
+}
+
+
