@@ -26,4 +26,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/menu_items', [MenuItemController::class, 'index']);
 Route::get('/menu_items/add', [MenuItemController::class, 'add']);
+Route::post('/menu_items/add', [MenuItemController::class, 'add_item']);
 Route::get('/menu_items/edit', [MenuItemController::class, 'edit']);
+
+
+

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\menuItem;
 use Illuminate\Http\Request;
 
 class MenuItemController extends Controller
@@ -21,4 +22,11 @@ class MenuItemController extends Controller
     {
         return view('menu_items.edit');
     }
+
+    public function add_item(Request $request)
+    {
+        menuItem::create($request->all());
+        return redirect()->back()->with('message','Položka pridaná');
+    }
+
 }
