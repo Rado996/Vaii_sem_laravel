@@ -128,7 +128,7 @@ div div textarea{
 
 #addMenuItemForm{
     /*display: none;*/
-    display: none;
+    display: block;
 }
 
 .edit_menu_item{
