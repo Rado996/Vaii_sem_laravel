@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    more
 
-    <form method="post" action="/menu_items/add">
+
+        @csrf
         <div class="container col-4 " id="addMenuItemForm" >
+            <form method="post" action="menu_items/add">
             <label > Názov položky </label>
             <input  name="itemName" id="item_name" class="form-control" cols="10" rows="1" placeholder="nejaky nazov">
             <label > Popis </label>
@@ -13,8 +16,9 @@
             <label > Cena  </label>
             <input name="itemPrice" id="item_price" class="form-control" cols="5" rows="1">
             <button type="submit" class="btn btn-primary btn-sm pull-right" name="submitComment" id="submitItem">Pridať položku</button>
+            </form>
         </div>
-    </form>
-    <x-alert/>
+
+
 
 @endsection
