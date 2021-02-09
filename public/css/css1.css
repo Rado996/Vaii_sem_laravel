@@ -136,7 +136,8 @@ div div textarea{
 }
 
 .edit_menu_form{
-    display: none;
+    /*display: none;*/
+    display: block;
 }
 
 table{

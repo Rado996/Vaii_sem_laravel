@@ -12,7 +12,8 @@ class MenuItemController extends Controller
 {
     public function index()
     {
-        return view('menu_items.index');
+        $menuItems = menuItem::all();
+        return view('menu_items.index', compact('menuItems'));
     }
 
 
@@ -24,6 +25,12 @@ class MenuItemController extends Controller
     public function edit()
     {
         return view('menu_items.edit');
+    }
+
+    public function edit_item(menuItemAddRequest $request)
+    {
+
+
     }
 
     public function add_item(menuItemAddRequest $request)
