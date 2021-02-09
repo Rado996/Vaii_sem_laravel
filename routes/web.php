@@ -24,10 +24,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Route::get('/menu_items', 'MenuItemController@index');
 
-Route::get('/menu_items', [MenuItemController::class, 'index']);
+Route::get('/menu_items', [MenuItemController::class, 'index'])->name('menu_items.index');
 Route::get('/menu_items/add', [MenuItemController::class, 'add']);
 Route::post('/menu_items/add', [MenuItemController::class, 'add_item']);
-Route::patch('/menu_items', [MenuItemController::class, 'edit_item']);
-
+Route::patch('/menu_items/{menuItem}/edit_Item', [MenuItemController::class, 'edit_item'])->name('item.edit_item');
+Route::get('/menu_items/{menuItem}/edit', [MenuItemController::class, 'edit'])->name('item_edit');
 
 

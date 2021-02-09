@@ -22,15 +22,30 @@ class MenuItemController extends Controller
         return view('menu_items.add');
     }
 
-    public function edit()
+    public function edit(MenuItem $menuItem)
     {
-        return view('menu_items.edit');
+        return view('menu_items.edit', compact('menuItem'));
     }
 
-    public function edit_item(menuItemAddRequest $request)
+    public function edit_item(menuItemAddRequest $request, MenuItem $menuItem)
     {
+        //ak je pouzivatel admin
 
+//        $menuItemID = $request->get('itemID');
+//        $menuItemName = $request->get('itemName');
+//        $menuItemDesc = $request->get('itemDesc');
+//        $menuItemIng = $request->get('itemIng');
+//        $menuItemPrice = $request->get('itemPrice');
+//        DB::update(
+//            'update menu_items set itemName, itemDesc, itemIng, itemPrice = ?,?,?,? > where name = ?',
+//            $menuItemName, $menuItemDesc, $menuItemIng, $menuItemPrice, [$menuItemID]
+//        );
+        $menuItem->update(['itemName' => $request->itemName,
+            'itemDesc' => $request->itemDesc,
+        'itemIng' => $request->itemIng,
+        'itemPrice' => $request->itemPrice]);
 
+        return redirect()->back()->with('message' , 'Položka upravená');
     }
 
     public function add_item(menuItemAddRequest $request)
