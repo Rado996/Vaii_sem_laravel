@@ -19,24 +19,36 @@
 
 
     @foreach($comments as $comment)
-        <div class="comment clearfix" id="comment{{$comment->id}}">
+        <div class="comment clearfix" data-author="{{$comment->createdBy}}" id="comment{{$comment->id}}">
             <div class="comment-details">
-                <p class="author" data-author="{{$comment->createdBy}}" > {{$comment->createdBy}}  </p>
+                <p class="author" > {{$comment->createdBy}}  </p>
                 <span class="comment-date">{{$comment->created_at}}</span>
-                <p>{{$comment->commentBody}}</p>
-
-                <a  data-cmid="{{$comment->id}}" class="btn btn-warning commentDeleteBtn" onclick="deleteComment({{$comment->id}})" >Vymazať</a>
-                <a  data-cmid="{{$comment->id}}" class="btn btn-warning commentEditBtn"  >Upraviť</a>
-
+                <p id="commentBodyID{{$comment->id}}" >{{$comment->commentBody}}</p>
+                <a  class="btn btn-warning commentDeleteBtn" onclick="deleteComment({{$comment->id}})" >Vymazať</a>
+                <a  class="btn btn-warning commentEditBtn"  onclick="editComment({{$comment->id}})" >Upraviť</a>
             </div>
         </div>
+
+        <div class="comment clearfix edit_comment_form" id="editComment{{$comment->id}}">
+            <div class="comment-details">
+                <textarea class="form-control" cols="10" rows="1" id="editCommentArea{{$comment->id}}">{{$comment->commentBody}}</textarea>
+                <a   class="btn btn-warning commentSendEditBtn" onclick="updateComment({{$comment->id}})" >Odoslať</a>
+                <a   class="btn btn-warning commentCancelEditBtn" onclick="cancelEdit({{$comment->id}})" >Zrusit</a>
+            </div>
+        </div>
+
+
+
+
+
 
     @endforeach
     </div>
 
     <script>
+
+
         function deleteComment(id) {
-            // var id = $(this).data("cmid");
             console.log(id)
             let commentDisplay = document.getElementById("comment" + id);
             $.ajax({
@@ -46,15 +58,62 @@
                 data: {
 
                 },
-                success: function (dataResult) {
-                    var dataResult = JSON.parse(dataResult);
+                success: function (response) {
+                    var dataResult = JSON.parse(response);
                     if (dataResult.statusCode == 200) {//Caka kym dostane 200 od controllera
                         commentDisplay.style.display = "none";
                     }
                 }
             });
 
-        };
+        }
+
+        function editComment(id) {
+            let editCommentForm = document.getElementById("editComment" + id);
+            editCommentForm.style.display = "block";
+            let commentDisplay = document.getElementById("comment" + id);
+            commentDisplay.style.display = "none";
+        }
+
+        function updateComment(id) {
+            let editCommentBody = document.getElementById("editCommentArea"+id);
+            let commentBody = $(editCommentBody).val();
+            let editCommentForm = document.getElementById("editComment" + id);
+            editCommentForm.style.display = "none";
+            let commentDisplay = document.getElementById("comment" + id);
+            commentDisplay.style.display = "block";
+            let createdBy = $(commentDisplay).data("author");
+            let newCommentBody = document.getElementById("commentBodyID" + id);
+            console.log(commentBody);
+            console.log(createdBy);
+
+
+            $.ajax({
+                url: "http://localhost/Vaii_sem_laravel/public/Comments/update/" + id,
+                type: "PATCH", //cakam odpoved 200
+                cache: false,
+                data: {
+                    _token:'{{ csrf_token() }}',
+                    commentBody: commentBody,
+                    createdBy: createdBy
+                },
+                success: function (response) {
+                    var dataResult = JSON.parse(response);
+                    if (dataResult.statusCode == 200) {//Caka kym dostane 200 od controllera
+                        newCommentBody.innerText=commentBody;
+                    }
+                }
+            });
+        }
+
+        function cancelEdit(id) {
+            let editCommentForm = document.getElementById("editComment" + id);
+            editCommentForm.style.display = "none";
+            let commentDisplay = document.getElementById("comment" + id);
+            commentDisplay.style.display = "block";
+        }
+
+
     </script>
 
 

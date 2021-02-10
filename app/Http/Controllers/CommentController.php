@@ -36,10 +36,17 @@ class CommentController extends Controller
 
     }
 
-    public function update(CommentAddRequest $request, Comment $comment)
+    public function update( $id)
     {
-        $comment->update(['commentBody' => $request->commentBody ]);
 
+        $comment = Comment::find($id);
+        $comment->commentBody = request('commentBody');
+        $comment->createdBy = request('createdBy');
+
+//        $id->update(['commentBody' => $request->commentBody,
+//            'createdBy' => $request->createdBy,
+//            ]);
+        $comment->save();
         return json_encode(array('statusCode' => 200));
     }
 

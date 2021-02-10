@@ -44,7 +44,7 @@ Route::delete('/Photos/{Photo}destroy', [PhotoController::class, 'destroy'])->na
 
 Route::get('/Comments', [CommentController::class, 'index'])->name('comments.index');
 Route::post('/Comments/create', [CommentController::class, 'create'])->name('comments.create');
-Route::get('/Comments/update/{id}/', [CommentController::class, 'update'])->name('comments.update');
+Route::patch('/Comments/update/{id}', [CommentController::class, 'update'])->name('comments.update');
 Route::get('/Comments/delete/{comment}', [CommentController::class, 'destroy'])->name('comments.delete');
 
 
