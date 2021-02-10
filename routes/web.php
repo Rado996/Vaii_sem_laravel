@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuItemController;
 /*
@@ -20,6 +22,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Route::get('/menu_items', 'MenuItemController@index');
@@ -27,7 +31,30 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/menu_items', [MenuItemController::class, 'index'])->name('menu_items.index');
 Route::get('/menu_items/add', [MenuItemController::class, 'add']);
 Route::post('/menu_items/add', [MenuItemController::class, 'add_item']);
-Route::patch('/menu_items/{menuItem}/edit_Item', [MenuItemController::class, 'edit_item'])->name('item.edit_item');
+Route::patch('/menu_items/{menuItem}/update', [MenuItemController::class, 'edit_item'])->name('item.edit_item');
 Route::get('/menu_items/{menuItem}/edit', [MenuItemController::class, 'edit'])->name('item_edit');
+Route::delete('/menu_items/{menuItem}/delete', [MenuItemController::class, 'delete'])->name('item_delete');
+
+Route::get('/Photos', [PhotoController::class, 'index'])->name('photos.index');
+Route::get('/Photos/add', [PhotoController::class, 'add'])->name('photos.add');
+Route::post('/Photos/create', [PhotoController::class, 'create'])->name('photos.create');
+Route::get('/Photos/{Photo}edit', [PhotoController::class, 'edit'])->name('photos.edit');
+Route::patch('/Photos/{Photo}update', [PhotoController::class, 'update'])->name('photos.update');
+Route::delete('/Photos/{Photo}destroy', [PhotoController::class, 'destroy'])->name('photos.destroy');
+
+Route::get('/Comments', [CommentController::class, 'index'])->name('comments.index');
+Route::post('/Comments/create', [CommentController::class, 'create'])->name('comments.create');
+Route::get('/Comments/update/{id}/', [CommentController::class, 'update'])->name('comments.update');
+Route::get('/Comments/delete/{comment}', [CommentController::class, 'destroy'])->name('comments.delete');
+
+
+
+
+
+
+
+
+
+
 
 

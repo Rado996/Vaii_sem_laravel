@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Validator;
 
 class MenuItemController extends Controller
 {
+
+
+    /**
+     * MenuItemController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index');
+    }
+
     public function index()
     {
         $menuItems = menuItem::all();
@@ -27,6 +37,12 @@ class MenuItemController extends Controller
         return view('menu_items.edit', compact('menuItem'));
     }
 
+    public function delete(MenuItem $menuItem)
+    {
+        $menuItem->delete();
+        return redirect()->back()->with('message' , 'Položka Vymazaná');
+    }
+
     public function edit_item(menuItemAddRequest $request, MenuItem $menuItem)
     {
         //ak je pouzivatel admin
@@ -37,8 +53,8 @@ class MenuItemController extends Controller
 //        $menuItemIng = $request->get('itemIng');
 //        $menuItemPrice = $request->get('itemPrice');
 //        DB::update(
-//            'update menu_items set itemName, itemDesc, itemIng, itemPrice = ?,?,?,? > where name = ?',
-//            $menuItemName, $menuItemDesc, $menuItemIng, $menuItemPrice, [$menuItemID]
+//            'update menu_items set itemName, itemDesc, itemIng, itemPrice = ?,?,?,? > where id = ?',[
+//            $menuItemName, $menuItemDesc, $menuItemIng, $menuItemPrice, $menuItemID]
 //        );
         $menuItem->update(['itemName' => $request->itemName,
             'itemDesc' => $request->itemDesc,
@@ -81,7 +97,7 @@ class MenuItemController extends Controller
 //        }
 //        make($request->all(), $rules, $messages);
 
-        menuItem::create($request->all());
+        MenuItem::create($request->all());
         return redirect()->back()->with('message' , 'Položka pridaná');
     }
 

@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app3.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,7 +25,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/css12.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/css13.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="header">
@@ -42,18 +42,31 @@
                     <a class="nav-link" href="Index.php">Domov</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="Ponuka.php">Ponuka</a>
+                    <a class="nav-link" href="http://localhost/Vaii_sem_laravel/public/menu_items">Ponuka</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="Fotogaleria.php">Fotogaleria</a>
+                    <a class="nav-link" href="http://localhost/Vaii_sem_laravel/public/Photos">Fotogaleria</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link " href="Recenzie.php">Recenzie</a>
+                    <a class="nav-link " href="http://localhost/Vaii_sem_laravel/public/Comments">Recenzie</a>
                 </li>
             </ul>
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
+                            <a class=" nav-link" href="#">
+                                &nbsp; {{ Auth::user()->name }}
+                            </a>
+                                <a href="{{ route('logout') }}" id="odhlasenie"
+                                   onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                                    {{ __('Odhlásiť') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                    {{-- ochrana proti csrf utokom --}}
+                                </form>
+
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>

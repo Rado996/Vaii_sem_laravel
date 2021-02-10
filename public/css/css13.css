@@ -28,7 +28,7 @@ nav {
 }
 
 #picture_Form{
-    display: none;
+    display: block;
 }
 
 #add_new_picture{
@@ -65,18 +65,18 @@ nav {
     border-top: lightgrey 2px solid;
     height: 90px;
 }
-.picture_edit_form{
-    height: 30%;
-    padding-top: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    padding-left: 0px;
-    padding-right: 0px;
-    width: 40%;
-    background-color: whitesmoke;
-    display: none;
-}
+/*.picture_edit_form{*/
+/*    height: 30%;*/
+/*    padding-top: 0px;*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    margin-bottom: 20px;*/
+/*    padding-left: 0px;*/
+/*    padding-right: 0px;*/
+/*    width: 40%;*/
+/*    background-color: whitesmoke;*/
+/*    display: none;*/
+/*}*/
 .picture_display{
     height: 30%;
     padding-top: 0px;
