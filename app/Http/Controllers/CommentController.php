@@ -16,10 +16,11 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::all();
+
         return view('Comments.index', compact('comments'));     //compact vklada do contentu
     }
 
-    public function add()
+ /*   public function add()
     {
         return view('Comments.add');
     }
@@ -27,7 +28,7 @@ class CommentController extends Controller
     public function edit(Comment $comment)
     {
         return view('Comments.edit', compact('comment'));
-    }
+    }*/
 
     public function create(CommentAddRequest $request)
     {

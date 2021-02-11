@@ -11,7 +11,7 @@
 
     @foreach($photos as $photo)
 
-        <div class="container picture_display" id="pictureDisplay{{$photo->id}}">
+        <div class="container picture_display rounded  " id="pictureDisplay{{$photo->id}}">
             <div class="picture_header">
                 <div> {{$photo->pictureHead}} </div>
 
