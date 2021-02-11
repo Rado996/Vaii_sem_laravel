@@ -21,14 +21,14 @@ class CommentAddRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
-    {
-        return [
-            'commentBody.required' => 'Nenapísali ste žiadnu recenziu.',
-            'commentBody.max' => 'Maximálny počet znakov je 500.',
-            'createdBy.required' => 'Musíte byť prihlásený.'
-        ];
-    }
+//    public function messages()
+//    {
+//        return [
+//            'commentBody.required' => 'Nenapísali ste žiadnu recenziu.',
+//            'commentBody.max' => 'Maximálny počet znakov je 500.',
+//            'createdBy.required' => 'Musíte byť prihlásený.'
+//        ];
+//    }
 
     public function rules()
     {

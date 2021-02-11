@@ -34,7 +34,7 @@
             </div>
 
             <div class="container picture stlpec">
-               {{$photo->picName}}
+               <img src="{{asset('/storage/uploads/'.$photo->pictureName)}}"   />
             </div>
 
             <div class="picture_footer">

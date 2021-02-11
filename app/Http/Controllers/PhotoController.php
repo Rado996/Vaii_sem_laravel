@@ -34,10 +34,22 @@ class PhotoController extends Controller
         return view('Photos.edit', compact('photo'));
     }
 
-    public function create(PhotoAddRequest $request)
+    public function create(Request $request)
     {
-        Photo::create($request->all());
-        return redirect()->back()->with('message' , 'Položka pridaná');
+        $request->validate([
+            'pictureHead' => 'required|min:3|max:30|regex:/^[^\s].+[^\s]$/',
+            'pictureDesc' => 'required|min:3|max:300|regex:/^[^\s].+[^\s]$/',
+            'pictureName' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10000',
+        ]);
+
+        $photo = Photo::create($request->all());
+        $file = $request->pictureName;
+        $photoName = $file->getClientOriginalName();
+        $file->storeAS('uploads' ,$photoName, 'public');
+        $photo->pictureName = $file->getClientOriginalName();
+        $photo->save();
+
+        return redirect()->back()->with('message' , 'Fotka pridaná');
 
     }
 

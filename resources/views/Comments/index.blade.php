@@ -90,7 +90,7 @@
 
             $.ajax({
                 url: "http://localhost/Vaii_sem_laravel/public/Comments/update/" + id,
-                type: "PATCH", //cakam odpoved 200
+                type: "PATCH",
                 cache: false,
                 data: {
                     _token:'{{ csrf_token() }}',
