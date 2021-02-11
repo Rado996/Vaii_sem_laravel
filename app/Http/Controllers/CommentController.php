@@ -48,7 +48,7 @@ class CommentController extends Controller
 //            'createdBy' => $request->createdBy,
 //            ]);
         $comment->save();
-        return json_encode(array('statusCode' => 200));
+        return json_encode(array('statusCode' => 200, 'data' => request('commentBody')));
     }
 
     public function destroy(Comment $comment)

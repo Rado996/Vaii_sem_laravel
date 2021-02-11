@@ -36,13 +36,13 @@ class PhotoController extends Controller
         return view('Photos.edit', compact('photo'));
     }
 
-    public function create(Request $request)
+    public function create(PhotoAddRequest $request)
     {
-        $request->validate([
-            'pictureHead' => 'required|min:3|max:30|regex:/^[^\s].+[^\s]$/',
-            'pictureDesc' => 'required|min:3|max:300|regex:/^[^\s].+[^\s]$/',
-            'pictureName' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-        ]);
+//        $request->validate([
+//            'pictureHead' => 'required|min:3|max:30|regex:/^[^\s].+[^\s]$/',
+//            'pictureDesc' => 'required|min:3|max:300|regex:/^[^\s].+[^\s]$/',
+//            'pictureName' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10000',
+//        ]);
 
         $photo = Photo::create($request->all());
         $file = $request->pictureName;
