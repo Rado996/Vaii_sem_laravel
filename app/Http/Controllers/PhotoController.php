@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PhotoAddRequest;
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -29,8 +30,9 @@ class PhotoController extends Controller
         return view('Photos.add');
     }
 
-    public function edit(Photo $photo)
+    public function edit($id)
     {
+        $photo = Photo::find($id);
         return view('Photos.edit', compact('photo'));
     }
 
@@ -53,19 +55,28 @@ class PhotoController extends Controller
 
     }
 
-    public function update(PhotoAddRequest $request, Photo $photo)
+    public function update(PhotoAddRequest $request, $id)
     {
-        $photo->update(['picHead' => $request->picHead,
-            'picDesc'=> $request->picDesc,
-            'picName' => $request->picName
+        $photo = Photo::find($id);
+        Storage::delete('/storage/app/public/uploads'. $photo->pictureName);
+//        $photo->pictureHead = $request->pictureHead;
+//        $photo->pictureDesc = $request->pictureDesc;
+//        $photo->pictureName = $request->pictureName->getClientOriginalName();
+        $request->pictureName->storeAS('uploads' ,$request->pictureName->getClientOriginalName(), 'public');
+        $photo->update(['pictureHead' => $request->pictureHead,
+            'pictureDesc'=> $request->pictureDesc,
+            'pictureName' => $request->pictureName->getClientOriginalName()
         ]);
-
+//        $photo->save();
         return redirect()->back()->with('message' , 'Položka upravená');
     }
 
-    public function delete(Photo $photo)
+    public function delete( $id)
     {
-
+        $photo = Photo::find($id);
+        Storage::delete('/storage/app/public/uploads'. $photo->pictureName);
+        $photo->delete();
+        return redirect()->back()->with('message' , 'Položka Vymazaná');
 
     }
 

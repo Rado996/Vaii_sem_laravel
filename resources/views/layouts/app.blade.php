@@ -29,7 +29,7 @@
 </head>
 <body>
     <div class="header">
-        <img src="img/lastradalogo_1.png" alt="Logo" />
+        <img src="{{asset('/storage/uploads/lastradalogo_1.png')}}" alt="Logo" />
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -39,35 +39,27 @@
         <div class="collapse navbar-collapse" id="navb">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="Index.php">Domov</a>
+                    <a class="nav-link" href="http://localhost/Vaii_sem_laravel/public">Domov</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="http://localhost/Vaii_sem_laravel/public/menu_items">Ponuka</a>
+                    <a class="nav-link" href="{{route('menu_items.index')}}">Ponuka</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="http://localhost/Vaii_sem_laravel/public/Photos">Fotogaleria</a>
+                    <a class="nav-link" href="{{route('photos.index')}}">Fotogaleria</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link " href="http://localhost/Vaii_sem_laravel/public/Comments">Recenzie</a>
+                    <a class="nav-link " href="{{route('comments.index')}}">Recenzie</a>
                 </li>
             </ul>
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                            <a class=" nav-link" href="#">
-                                &nbsp; {{ Auth::user()->name }}
-                            </a>
-                                <a href="{{ route('logout') }}" id="odhlasenie"
-                                   onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">
-                                    {{ __('Odhlásiť') }}
-                                </a>
+                            <span>{{ Auth::user()->name }}   </span>
+                            <a href="{{ route('logout') }}" id="odhlasenie" onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();"> Odhlásiť</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
-                                    {{-- ochrana proti csrf utokom --}}
                                 </form>
-
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
 

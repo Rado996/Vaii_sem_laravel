@@ -25,9 +25,6 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Route::get('/menu_items', 'MenuItemController@index');
-
 Route::get('/menu_items', [MenuItemController::class, 'index'])->name('menu_items.index');
 Route::get('/menu_items/add', [MenuItemController::class, 'add']);
 Route::post('/menu_items/add', [MenuItemController::class, 'add_item']);
@@ -38,9 +35,9 @@ Route::delete('/menu_items/{menuItem}/delete', [MenuItemController::class, 'dele
 Route::get('/Photos', [PhotoController::class, 'index'])->name('photos.index');
 Route::get('/Photos/add', [PhotoController::class, 'add'])->name('photos.add');
 Route::post('/Photos/create', [PhotoController::class, 'create'])->name('photos.create');
-Route::get('/Photos/{Photo}edit', [PhotoController::class, 'edit'])->name('photos.edit');
-Route::patch('/Photos/{Photo}update', [PhotoController::class, 'update'])->name('photos.update');
-Route::delete('/Photos/{Photo}destroy', [PhotoController::class, 'destroy'])->name('photos.destroy');
+Route::get('/Photos/{id}/edit', [PhotoController::class, 'edit'])->name('photos.edit');
+Route::patch('/Photos/{id}/update', [PhotoController::class, 'update'])->name('photos.update');
+Route::delete('/Photos/{id}/delete', [PhotoController::class, 'delete'])->name('photos.delete');
 
 Route::get('/Comments', [CommentController::class, 'index'])->name('comments.index');
 Route::post('/Comments/create', [CommentController::class, 'create'])->name('comments.create');
