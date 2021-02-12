@@ -206,10 +206,6 @@ table tr :hover{
 
 }
 
-td .cancel a, td .submit a{
-    color: black; !important;
-}
-
 .account {
     margin-right: 0px;
     margin-left: auto;

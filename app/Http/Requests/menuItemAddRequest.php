@@ -42,7 +42,7 @@ class menuItemAddRequest extends FormRequest
             'itemName' => 'required|max:30',
             'itemDesc' => 'required|max:100',
             'itemIng' => 'required|max:200',
-            'itemPrice' => 'required',
+            'itemPrice' => 'required|numeric|digits_between:1,4|min:0',
         ];
     }
 }

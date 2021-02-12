@@ -5,7 +5,7 @@
     @auth
         @if(Auth::user()->name == 'Admin')
             <div class="container col-2">
-                <a href="{{'http://localhost/Vaii_sem_laravel/public/menu_items/add'}}" class="btn btn-primary btn-sm " name="addMenuItem" id="addMenuItem">Pridať položku</a>
+                <a href="{{'http://localhost/Vaii_sem_laravel/public/menu_items/add'}}" class="btn btn-primary btn-sm " id="addMenuItem">Pridať položku</a>
             </div>
         @endif
     @endauth
